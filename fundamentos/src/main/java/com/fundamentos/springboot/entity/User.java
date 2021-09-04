@@ -3,6 +3,7 @@ package com.fundamentos.springboot.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class User {
     private String name;
     @Column(length = 50)
     private String email;
-    private LocalTime birthDate;
+    private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference //para evitar stackoverflow
@@ -28,7 +29,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, LocalTime birthDate) {
+    public User(String name, String email, LocalDate birthDate) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
@@ -58,11 +59,11 @@ public class User {
         this.email = email;
     }
 
-    public LocalTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
