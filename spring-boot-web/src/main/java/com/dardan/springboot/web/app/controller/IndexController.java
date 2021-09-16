@@ -1,5 +1,6 @@
 package com.dardan.springboot.web.app.controller;
 
+import com.dardan.springboot.web.app.models.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -35,4 +38,27 @@ public class IndexController {
 //        mv.setViewName("index");
 //        return mv; // tiene q existir una vista con ese nombre
 //    }
+    @RequestMapping("/perfil")
+    public String perfil(Model model) {
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Darwin");
+        usuario.setApellido("Quispe");
+        usuario.setEmail("darwinqsot@gmail.com");
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("titulo","Perfil del Usuario: ".concat(usuario.getNombre()));
+        return "perfil";
+    }
+
+    @RequestMapping("/listar")
+    public String listar(Model model) {
+
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("Darwin", "Quispe", "darwinqsot@gmail.com"));
+        usuarios.add(new Usuario("Horge", "Perez", "darwinqsot@gmail.com"));
+        usuarios.add(new Usuario("Domingo Días", "zona del servidor", "darwinqsot@gmail.com"));
+
+        model.addAttribute("titulo","Hola Spring Framework con Model");
+        model.addAttribute("usuarios", usuarios);
+        return "listar";
+    }
 }
