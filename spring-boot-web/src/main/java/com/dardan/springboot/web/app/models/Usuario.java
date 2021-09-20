@@ -9,7 +9,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String darwin, String quispe, String nissant) {
+    public Usuario(String nombre, String apellido, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
     }
 
     public String getEmail() {
