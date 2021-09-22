@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/app") //ruta de primer nivel
 public class IndexController {
-        //COMENTARIO DE prueba para subir git cambio
+        //COMENTARIO DE prueba para subir git
     //@RequestMapping(value="/index",method= RequestMethod.GET)
     //@GetMapping(value="/index")
     //@GetMapping("/index")
