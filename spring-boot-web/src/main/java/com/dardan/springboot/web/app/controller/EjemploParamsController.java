@@ -31,7 +31,7 @@ public class EjemploParamsController {
     @GetMapping("/mix-params-request")
     public String param(HttpServletRequest request, Model model){
         String saludo = request.getParameter("saludo");
-        Integer numero = null;
+        Integer numero = null; // puede ser null o 0
         try {
             numero = Integer.parseInt(request.getParameter("numero"));
         }catch(NumberFormatException e) {
