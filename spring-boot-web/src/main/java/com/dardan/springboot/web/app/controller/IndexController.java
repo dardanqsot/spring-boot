@@ -1,6 +1,7 @@
 package com.dardan.springboot.web.app.controller;
 
 import com.dardan.springboot.web.app.models.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -18,13 +19,20 @@ import java.util.Map;
 @Controller
 @RequestMapping("/app") //ruta de primer nivel
 public class IndexController {
+
+    @Value("${texto.indexcontroller.index.titulo}")
+    private String textoIndex;
+    @Value("${texto.indexcontroller.perfil.titulo}")
+    private String textoPerfil;
+    @Value("${texto.indexcontroller.listar.titulo}")
+    private String textoListar;
         //COMENTARIO DE prueba para subir git
     //@RequestMapping(value="/index",method= RequestMethod.GET)
     //@GetMapping(value="/index")
     //@GetMapping("/index")
     @GetMapping({"/index", "/", "", "/home"})
     public String index(Model model) {
-        model.addAttribute("titulo","Hola Spring Framework con Model");
+        model.addAttribute("titulo",textoIndex);
         return "index"; // tiene q existir una vista con ese nombre
     }
 //  2 da forma
@@ -47,13 +55,13 @@ public class IndexController {
         usuario.setApellido("Quispe");
         usuario.setEmail("darwinqsot@gmail.com");
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo","Perfil del Usuario: ".concat(usuario.getNombre()));
+        model.addAttribute("titulo",textoPerfil.concat(usuario.getNombre()));
         return "perfil";
     }
 
     @RequestMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("titulo","Listado de usuarios");
+        model.addAttribute("titulo",textoListar);
         return "listar";
     }
 
