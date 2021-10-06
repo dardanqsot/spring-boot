@@ -1,6 +1,6 @@
 package com.dardan.springbootdi.app.controller;
 
-import com.dardan.springbootdi.app.models.service.MiServicio;
+import com.dardan.springbootdi.app.models.service.IServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @Autowired   //sirve para inyectar un objeto guardado en el contenedor de spring
-    private MiServicio servicio;
+    private IServicio servicio;
 
     @GetMapping({"/","","/index"})
     public String index(Model model) {
