@@ -8,6 +8,6 @@ public class MiServicio implements IServicio {
 
     @Override
     public String operacion() {
-        return "Ejecutando algun proceso importante con Interface service ...";
+        return "Ejecutando algun proceso importante simple con Interface service ...";
     }
 }

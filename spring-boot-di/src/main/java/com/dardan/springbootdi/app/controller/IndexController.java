@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @Autowired   //sirve para inyectar un objeto guardado en el contenedor de spring
+    @Autowired   // @Autowired sirve para inyectar un objeto guardado en el contenedor de spring
     private IServicio servicio;
 
     @GetMapping({"/","","/index"})
