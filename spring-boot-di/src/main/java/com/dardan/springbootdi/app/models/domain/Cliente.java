@@ -2,8 +2,10 @@ package com.dardan.springbootdi.app.models.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Component
+@RequestScope //alcance de uso , tmb se puede usar sessionScope para manejo de sesiones con timeout etc
 public class Cliente {
 
     @Value("${cliente.nombre}")
