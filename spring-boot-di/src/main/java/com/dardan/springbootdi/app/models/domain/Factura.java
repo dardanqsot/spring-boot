@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 @Component
@@ -18,6 +20,18 @@ public class Factura {
     @Autowired
     private List<ItemFactura> items;
 
+    @PostConstruct // Se ejecuta justo despues crear objeto y despues de la inyeccion de las dependencias
+    public void inicializar() {
+        cliente.setNombre(cliente.getNombre().concat(" ").concat(" Daniel"));
+        descripcion = descripcion.concat(" del cliente:  ").concat(cliente.getNombre());
+
+    }
+
+    @PreDestroy
+    public void destruir(){
+        System.out.println("Factura Destruida: ".concat(descripcion));
+
+    }
     public String getDescripcion() {
         return descripcion;
     }
