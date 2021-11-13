@@ -6,10 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.validation.Valid;
 
 @Controller
+@SessionAttributes("usuario")
 public class FormController {
 
     @GetMapping("/form")
@@ -24,7 +28,7 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String procesar(@Valid Usuario usuario, BindingResult result, Model model){ //Por defecto se usa el nombnre de la clase , pero con en model Atribute se puede cambiar de nombre
+    public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status){ //Por defecto se usa el nombnre de la clase , pero con en model Atribute se puede cambiar de nombre
 
         model.addAttribute("titulo", "Resultado form");
         if(result.hasErrors()){
@@ -33,6 +37,7 @@ public class FormController {
                 errores.put(err.getField(), "El campo ".concat(err.getField().concat(" ").concat(err.getDefaultMessage())));
             });
             model.addAttribute("error", errores);*/
+            status.setComplete();
             return "form";
         }
 
