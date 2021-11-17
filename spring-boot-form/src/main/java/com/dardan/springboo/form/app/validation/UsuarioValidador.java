@@ -17,7 +17,7 @@ public class UsuarioValidador implements Validator {
     public void validate(Object target, Errors errors) {
         Usuario usuario = (Usuario) target;
 
-        ValidationUtils.rejectIfEmpty(errors,"nombre","NotEmpty.usuario.nombre"); //el string debe ser el mismo nombre del atributo, y la llave del properties
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"nombre","requerido.usuario.nombre"); //el string debe ser el mismo nombre del atributo, y la llave del properties
 
         if(!usuario.getIdentificador().matches("[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")){
             errors.rejectValue("identificador", "pattern.usuario.identificador");
