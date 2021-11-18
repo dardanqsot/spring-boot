@@ -1,6 +1,7 @@
 package com.dardan.springboo.form.app.models.domain;
 
 import com.dardan.springboo.form.app.validation.IdentificadorRegex;
+import com.dardan.springboo.form.app.validation.Requerido;
 
 import javax.validation.constraints.*;
 
@@ -13,7 +14,8 @@ public class Usuario {
     //@NotEmpty(message = "El nombre no puede estar vacio")
     private String nombre;
 
-    @NotEmpty
+    //@NotEmpty
+    @Requerido
     private String apellido;
 
     @NotBlank
@@ -23,7 +25,7 @@ public class Usuario {
     @NotEmpty
     private String password;
 
-    @NotEmpty
+    @Requerido
     @Email
     private String email;
 
