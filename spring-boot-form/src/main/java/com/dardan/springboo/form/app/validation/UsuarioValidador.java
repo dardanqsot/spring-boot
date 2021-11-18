@@ -15,12 +15,12 @@ public class UsuarioValidador implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        Usuario usuario = (Usuario) target;
+        //Usuario usuario = (Usuario) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors,"nombre","requerido.usuario.nombre"); //el string debe ser el mismo nombre del atributo, y la llave del properties
 
-        if(!usuario.getIdentificador().matches("[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")){
+/*        if(!usuario.getIdentificador().matches("[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")){
             errors.rejectValue("identificador", "pattern.usuario.identificador");
-        }
+        }*/
     }
 }

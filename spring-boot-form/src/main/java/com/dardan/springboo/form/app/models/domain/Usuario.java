@@ -1,10 +1,13 @@
 package com.dardan.springboo.form.app.models.domain;
 
+import com.dardan.springboo.form.app.validation.IdentificadorRegex;
+
 import javax.validation.constraints.*;
 
 public class Usuario {
 
     //@Pattern(regexp = "[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")
+    @IdentificadorRegex
     private String identificador;
 
     //@NotEmpty(message = "El nombre no puede estar vacio")
