@@ -29,6 +29,8 @@ public class Usuario {
     @Email
     private String email;
 
+    private Integer cuenta;
+
     public String getIdentificador() {
         return identificador;
     }
@@ -75,5 +77,16 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @NotNull  //NotNull para Objetos(q inician con Mayuscula un int no puede usar un NotNull)
+    @Min(5)
+    @Max(5000)
+    public Integer getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Integer cuenta) {
+        this.cuenta = cuenta;
     }
 }
