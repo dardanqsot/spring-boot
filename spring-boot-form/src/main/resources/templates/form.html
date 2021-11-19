@@ -42,27 +42,34 @@
             <input type="password" th:field="*{password}" id="password">
         </div>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-        </div>
+    </div>
     <div>
         <label for="email"> Email </label>
         <div>
             <input type="text" th:field="*{email}" id="email">
         </div>
         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-        </div>
-    <div>
-    <div>
-         <label for="cuenta"> Cuenta </label>
-         <div>
-             <input type="number" th:field="*{cuenta}" id="cuenta">
-         </div>
-         <div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
     </div>
+    <div>
         <div>
-        <div>
-            <input type="submit" value="enviar">
+            <label for="cuenta"> Cuenta </label>
+            <div>
+                <input type="number" th:field="*{cuenta}" id="cuenta">
+            </div>
+            <div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
         </div>
-    </div>
+        <div>
+            <label for="fechaNacimiento"> Fecha  </label>
+            <div>
+                <input type="text" th:field="*{fechaNacimiento}" id="fechaNacimiento" placeholder="yyyy-MMM-dd">
+            </div>
+            <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+        </div>
+        <div>
+            <div>
+                <input type="submit" value="enviar">
+            </div>
+        </div>
 </form>
 </body>
 </html>

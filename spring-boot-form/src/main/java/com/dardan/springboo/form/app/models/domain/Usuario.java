@@ -2,8 +2,10 @@ package com.dardan.springboo.form.app.models.domain;
 
 import com.dardan.springboo.form.app.validation.IdentificadorRegex;
 import com.dardan.springboo.form.app.validation.Requerido;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
+import java.util.Date;
 
 public class Usuario {
 
@@ -29,7 +31,14 @@ public class Usuario {
     @Email
     private String email;
 
+    @NotNull  //NotNull para Objetos(q inician con Mayuscula un int no puede usar un NotNull)
+    @Min(5)
+    @Max(5000)
     private Integer cuenta;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaNacimiento;
 
     public String getIdentificador() {
         return identificador;
@@ -79,14 +88,19 @@ public class Usuario {
         this.email = email;
     }
 
-    @NotNull  //NotNull para Objetos(q inician con Mayuscula un int no puede usar un NotNull)
-    @Min(5)
-    @Max(5000)
     public Integer getCuenta() {
         return cuenta;
     }
 
     public void setCuenta(Integer cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }
