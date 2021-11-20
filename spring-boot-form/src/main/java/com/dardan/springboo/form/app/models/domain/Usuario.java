@@ -37,7 +37,8 @@ public class Usuario {
     private Integer cuenta;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past //La fecha a ingresar debe ser menor a la actual   o @Future lo contraio
+    @DateTimeFormat(pattern = "yyyy-MM-dd") //va con guiones en caso sea tipo date en html
     private Date fechaNacimiento;
 
     public String getIdentificador() {
