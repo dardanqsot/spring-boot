@@ -31,7 +31,7 @@ public class FormController {
         binder.addValidators(validador); //EN LUGAR DE USAR set usamos add para adicionar a por defecto
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false); //la indulgencia si se va a realizar un parse y si sera estricto o tolerante
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+        binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, true)); //entre comillas x si se desea especificar un campo, sino quitarlo
     }
 
     @GetMapping("/form")
