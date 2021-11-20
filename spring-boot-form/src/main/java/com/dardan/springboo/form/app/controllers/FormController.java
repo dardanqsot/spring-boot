@@ -3,6 +3,7 @@ package com.dardan.springboo.form.app.controllers;
 import com.dardan.springboo.form.app.models.domain.Usuario;
 import com.dardan.springboo.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @SessionAttributes("usuario")
@@ -26,6 +29,9 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder){ //desacopla el validador
         binder.addValidators(validador); //EN LUGAR DE USAR set usamos add para adicionar a por defecto
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false); //la indulgencia si se va a realizar un parse y si sera estricto o tolerante
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
     @GetMapping("/form")

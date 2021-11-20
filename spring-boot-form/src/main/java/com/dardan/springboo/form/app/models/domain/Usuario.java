@@ -2,7 +2,7 @@ package com.dardan.springboo.form.app.models.domain;
 
 import com.dardan.springboo.form.app.validation.IdentificadorRegex;
 import com.dardan.springboo.form.app.validation.Requerido;
-import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -38,7 +38,7 @@ public class Usuario {
 
     @NotNull
     @Past //La fecha a ingresar debe ser menor a la actual   o @Future lo contraio
-    @DateTimeFormat(pattern = "yyyy-MM-dd") //va con guiones en caso sea tipo date en html
+    //@DateTimeFormat(pattern = "yyyy-MM-dd") //va con guiones en caso sea tipo date en html
     private Date fechaNacimiento;
 
     public String getIdentificador() {
