@@ -1,5 +1,6 @@
 package com.dardan.springboo.form.app.controllers;
 
+import com.dardan.springboo.form.app.editors.NombreMayusculaEditor;
 import com.dardan.springboo.form.app.models.domain.Usuario;
 import com.dardan.springboo.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class FormController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false); //la indulgencia si se va a realizar un parse y si sera estricto o tolerante
         binder.registerCustomEditor(Date.class, "fechaNacimiento",new CustomDateEditor(dateFormat, true)); //entre comillas x si se desea especificar un campo, sino quitarlo
+
+        binder.registerCustomEditor(String.class, "nombre",new NombreMayusculaEditor());
+        binder.registerCustomEditor(String.class, "apellido",new NombreMayusculaEditor());
     }
 
     @GetMapping("/form")
