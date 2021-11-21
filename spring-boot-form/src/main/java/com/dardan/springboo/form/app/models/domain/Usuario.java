@@ -4,6 +4,7 @@ import com.dardan.springboo.form.app.validation.IdentificadorRegex;
 import com.dardan.springboo.form.app.validation.Requerido;
 //import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Date;
 
@@ -24,7 +25,7 @@ public class Usuario {
     @Size(min = 3, max = 8)
     private String username;
 
-    @NotEmpty
+    @NotEmpty  // para valida string no objetos
     private String password;
 
     @Requerido
@@ -41,8 +42,8 @@ public class Usuario {
     //@DateTimeFormat(pattern = "yyyy-MM-dd") //va con guiones en caso sea tipo date en html
     private Date fechaNacimiento;
 
-    @NotEmpty
-    private String pais;
+    @Valid
+    private Pais pais;
 
     public String getIdentificador() {
         return identificador;
@@ -108,11 +109,11 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getPais() {
+    public Pais getPais() {
         return pais;
     }
 
-    public void setPais(String pais) {
+    public void setPais(Pais pais) {
         this.pais = pais;
     }
 }
