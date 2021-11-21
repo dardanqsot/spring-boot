@@ -15,9 +15,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @SessionAttributes("usuario")
@@ -40,6 +38,17 @@ public class FormController {
     @ModelAttribute("paises")
     public List<String> paises(){
         return Arrays.asList("España","Mexico","Perú","Colombia","Venezuela");
+    }
+
+    @ModelAttribute("paisesMap")
+    public Map<String,String> paisesMap(){
+        Map<String,String> paises = new HashMap<String, String>();
+        paises.put("ES", "España");
+        paises.put("MX", "Mexico");
+        paises.put("CL", "Chile");
+        paises.put("PE", "Perú");
+        paises.put("AR", "Aregentina");
+        return paises;
     }
 
     @GetMapping("/form")
