@@ -42,7 +42,7 @@ public class Usuario {
     //@DateTimeFormat(pattern = "yyyy-MM-dd") //va con guiones en caso sea tipo date en html
     private Date fechaNacimiento;
 
-    @Valid
+    @NotNull
     private Pais pais;
 
     public String getIdentificador() {

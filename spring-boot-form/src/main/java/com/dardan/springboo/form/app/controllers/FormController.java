@@ -1,6 +1,7 @@
 package com.dardan.springboo.form.app.controllers;
 
 import com.dardan.springboo.form.app.editors.NombreMayusculaEditor;
+import com.dardan.springboo.form.app.editors.PaisPropertyEditor;
 import com.dardan.springboo.form.app.models.domain.Pais;
 import com.dardan.springboo.form.app.models.domain.Usuario;
 import com.dardan.springboo.form.app.services.PaisService;
@@ -29,6 +30,9 @@ public class FormController {
     @Autowired
     private PaisService paisService;
 
+    @Autowired
+    private PaisPropertyEditor paisPropertyEditor;
+
     @InitBinder
     public void initBinder(WebDataBinder binder){ //desacopla el validador
         binder.addValidators(validador); //EN LUGAR DE USAR set usamos add para adicionar a por defecto
@@ -38,6 +42,9 @@ public class FormController {
 
         binder.registerCustomEditor(String.class, "nombre",new NombreMayusculaEditor());
         binder.registerCustomEditor(String.class, "apellido",new NombreMayusculaEditor());
+
+        binder.registerCustomEditor(PaisPropertyEditor.class, "pais", paisPropertyEditor);
+
     }
 
     @ModelAttribute("listaPaises")
