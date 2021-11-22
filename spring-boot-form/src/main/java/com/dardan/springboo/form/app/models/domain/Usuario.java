@@ -4,7 +4,6 @@ import com.dardan.springboo.form.app.validation.IdentificadorRegex;
 import com.dardan.springboo.form.app.validation.Requerido;
 //import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +46,7 @@ public class Usuario {
     private Pais pais;
 
     @NotEmpty
-    private List<String> roles;
+    private List<Role> roles;
 
     public String getIdentificador() {
         return identificador;
@@ -121,11 +120,11 @@ public class Usuario {
         this.pais = pais;
     }
 
-    public List<String> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }

@@ -3,8 +3,10 @@ package com.dardan.springboo.form.app.controllers;
 import com.dardan.springboo.form.app.editors.NombreMayusculaEditor;
 import com.dardan.springboo.form.app.editors.PaisPropertyEditor;
 import com.dardan.springboo.form.app.models.domain.Pais;
+import com.dardan.springboo.form.app.models.domain.Role;
 import com.dardan.springboo.form.app.models.domain.Usuario;
 import com.dardan.springboo.form.app.services.PaisService;
+import com.dardan.springboo.form.app.services.RoleService;
 import com.dardan.springboo.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -31,6 +33,9 @@ public class FormController {
     private PaisService paisService;
 
     @Autowired
+    private RoleService roleService;
+
+    @Autowired
     private PaisPropertyEditor paisPropertyEditor;
 
     @InitBinder
@@ -50,6 +55,11 @@ public class FormController {
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises(){
         return paisService.listar();
+    }
+
+    @ModelAttribute("listaRoles")
+    public List<Role> listaRoles(){
+        return this.roleService.listar();
     }
 
     @ModelAttribute("listaRolesString")
