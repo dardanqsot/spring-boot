@@ -3,6 +3,7 @@ package com.dardan.springboo.form.app.controllers;
 import com.dardan.springboo.form.app.editors.NombreMayusculaEditor;
 import com.dardan.springboo.form.app.models.domain.Pais;
 import com.dardan.springboo.form.app.models.domain.Usuario;
+import com.dardan.springboo.form.app.services.PaisService;
 import com.dardan.springboo.form.app.validation.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -25,6 +26,9 @@ public class FormController {
     @Autowired
     private UsuarioValidador validador;
 
+    @Autowired
+    private PaisService paisService;
+
     @InitBinder
     public void initBinder(WebDataBinder binder){ //desacopla el validador
         binder.addValidators(validador); //EN LUGAR DE USAR set usamos add para adicionar a por defecto
@@ -38,12 +42,7 @@ public class FormController {
 
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises(){
-        return Arrays.asList(
-                new Pais(1,"ES","España"),
-                new Pais(2,"MX","Mexico"),
-                new Pais(3,"PE","Perú"),
-                new Pais(4,"CO","Colombia"),
-                new Pais(5,"VE","Venezuela"));
+        return paisService.listar();
     }
 
     @ModelAttribute("paises")
