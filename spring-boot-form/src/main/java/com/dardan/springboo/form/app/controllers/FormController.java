@@ -43,13 +43,22 @@ public class FormController {
         binder.registerCustomEditor(String.class, "nombre",new NombreMayusculaEditor());
         binder.registerCustomEditor(String.class, "apellido",new NombreMayusculaEditor());
 
-        binder.registerCustomEditor(PaisPropertyEditor.class, "pais", paisPropertyEditor);
+        binder.registerCustomEditor(Pais.class, "pais", paisPropertyEditor);
 
     }
 
     @ModelAttribute("listaPaises")
     public List<Pais> listaPaises(){
         return paisService.listar();
+    }
+
+    @ModelAttribute("listaRolesString")
+    public List<String> listaRolesString(){
+        List<String> roles = new ArrayList<>();
+        roles.add("ROLE_ADMIN");
+        roles.add("ROLE_USER");
+        roles.add("ROLE_MODERADOR");
+        return roles;
     }
 
     @ModelAttribute("paises")
