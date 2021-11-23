@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}"></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
 <h3 th:text="${titulo}"></h3>
@@ -19,7 +20,7 @@
     <li th:text="${usuario.pais.nombre}"></li>
     <li th:text="${#dates.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}"></li> <!--en lugar de dates tmb puede ser calendars-->
     <li th:text="'Habilitado: ' + ${usuario.habilitar}"></li>
-    <li th:text="'Género: ' + ${usuario.genero}"></li>
+    <li th:text="'Género 2: ' + ${usuario.genero}"></li>
     <li th:text="'Valor Oculto: ' + ${usuario.valorSecreto}"></li>
 </ul>
 
