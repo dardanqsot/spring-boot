@@ -132,11 +132,20 @@ public class FormController {
                 errores.put(err.getField(), "El campo ".concat(err.getField().concat(" ").concat(err.getDefaultMessage())));
             });
             model.addAttribute("error", errores);*/
-            status.setComplete();
+            model.addAttribute("titulo", "Resultado form");
             return "form";
         }
 
-        model.addAttribute("usuario", usuario);
+        return "redirect:/ver";
+    }
+
+    @GetMapping("/ver")
+    public String ver(@SessionAttribute(name="usuario", required = false) Usuario usuario, Model model, SessionStatus status){
+        if(usuario == null){
+            return "redirect:/form";
+        }
+        model.addAttribute("titulo", "Resultado form");
+        status.setComplete(); //eimina la sesion
         return "resultado";
     }
 }
